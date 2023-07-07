@@ -9,7 +9,7 @@ const Route = require("express").Router();
 Route.get(`${MarkDown_HEADLINE_API}`, async (req, res) => {
   //判断redis中是否有数据
   let redisResult = await redis.get(MarkDown_HEADLINE_API);
-  if (redisResult !== null) { 
+  if (redisResult !== null) {
     return res.send(redisResult);
   }
   let findResult = await Article_title.findAll();

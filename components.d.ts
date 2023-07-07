@@ -29,6 +29,7 @@ declare module 'vue' {
     NCalendar: typeof import('naive-ui')['NCalendar']
     NCard: typeof import('naive-ui')['NCard']
     NCarousel: typeof import('naive-ui')['NCarousel']
+    NCode: typeof import('naive-ui')['NCode']
     NCollapse: typeof import('naive-ui')['NCollapse']
     NCollapseItem: typeof import('naive-ui')['NCollapseItem']
     NDivider: typeof import('naive-ui')['NDivider']
@@ -52,6 +53,7 @@ declare module 'vue' {
     SideBar: typeof import('./src/components/SideBar/index.vue')['default']
     SlideShow: typeof import('./src/components/SlideShow/SlideShow.vue')['default']
     SvgComponent: typeof import('./src/components/svgComponent/index.vue')['default']
+    TimeCard: typeof import('./src/components/TimeCard/index.vue')['default']
     Video: typeof import('./src/components/Video/index.vue')['default']
   }
 }

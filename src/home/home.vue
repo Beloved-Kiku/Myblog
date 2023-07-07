@@ -7,6 +7,7 @@
     ></SideBar>
     <div class="home">
         <Content/>
+        <TimeCard></TimeCard>
     </div>
     <Footer></Footer>
   </div>
@@ -14,6 +15,7 @@
 <script lang="ts" setup>
 import Footer from "@/components/Footer/Footer.vue";
 import Content from "@/components/content/index.vue";
+import TimeCard from '@/components/TimeCard/index.vue'
 import SlideShow from "@/components/SlideShow/SlideShow.vue";
 import SideBar from "@/components/SideBar/index.vue";
 import { ref } from "vue";
@@ -28,21 +30,25 @@ const changeIsShowState = (state: Boolean) => {
 </script>
 <style scoped>
 .container {
-  width: 50%;
+  width: 60%;
   transition: width 0.5s ease-in-out;
-  background-color: #fff;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
   overflow-x: auto;
   padding-top: 1.5%;
   margin: 0 auto;
 }
 .containers {
-  width: 60%;
+  width: 90%;
   transition: width 0.5s ease-in-out;
-  background-color: #fff;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
   overflow-x: auto;
   padding-top: 1.5%;
   margin: 0 auto;
+}
+.home{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  
 }
 </style>

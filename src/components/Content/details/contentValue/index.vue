@@ -20,19 +20,38 @@
       推荐
 </template>
 <script setup lang="ts">
-import {ref} from 'vue';
+import {ref,onMounted} from 'vue';
 import { useRoute, RouteLocationNormalizedLoaded,useRouter } from 'vue-router';
-//引入markdown解析
-import { marked } from "marked";
-marked.options({
-  mangle: false,
-  headerIds:false
-})
-let html: any = ref('')
+//引入markdown解析,
+import MarkdownIt from 'markdown-it';
+import hljs from "highlight.js/lib/core";
+import javascript from "highlight.js/lib/languages/javascript";
+import typescript from "highlight.js/lib/languages/typescript";
+import 'highlight.js/styles/atom-one-dark.css';
+hljs.registerLanguage("javascript", javascript);
+hljs.registerLanguage("typescript", typescript);
 //获取文章信息
 const getCurrentRoute = <RouteLocationNormalizedLoaded | any>useRoute()
-  html.value =getCurrentRoute.query.text
-  html.value = marked.parse(html.value)
+let html: any = ref('')
+//创建markdown解析对象
+const createMd=()=>{
+  html.value = getCurrentRoute.query.text 
+  const md =new MarkdownIt({
+  // 替换为实际的Markdown文本
+    highlight:(code:string,lang:string)=>{
+      if (lang && hljs.getLanguage(lang)) {
+        try {
+          return `<pre class="hljs"><code>${hljs.highlight(lang, code).value}</code></pre>`;
+        } catch (error) { }
+      }
+      return `<pre class="hljs"><code>${md.utils.escapeHtml(code)}</code></pre>`
+    }
+  })
+  html.value = md.render(html.value)
+}
+onMounted(()=>{
+  createMd()
+})
 //路由监听进入置顶
 const Router  =useRouter()
 Router.beforeEach((to)=>{

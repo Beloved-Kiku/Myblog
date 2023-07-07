@@ -1,5 +1,5 @@
 <template>
-<div class="box" style="width: 20px; height: 20px;">
+<div class="box" style="width: 1.25rem /* 20/16 */; height: 1.25rem /* 20/16 */;">
         <svg aria-hidden="true" style="width: 100%; height: 100%;" >
             <use :xlink:href="symbolId" :fill="color" />
         </svg>

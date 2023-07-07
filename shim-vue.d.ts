@@ -4,6 +4,8 @@ declare module "*vue" {
   const component: DefineComponent<{}, {}, any>;
   export default component;
 }
+declare var Math: Math;
 declare module "@liripeng/vue-audio-player";
 declare module "declare module 'vue3-markdown-it";
 declare module "@/api/content/index.js";
+declare module "@/tools/currentDate.ts";

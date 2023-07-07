@@ -20,12 +20,13 @@ app.all("*", function (req, res, next) {
 });
 
 app.listen(3000, () => {
-
   app.use(require("./src/routes/markdown/markdownHeadline/index"));
   app.use(require("./src/routes/markdown/markdownDetails/index"));
   app.use(require("./src/routes/markdown/markdownCurrent/index"));
   app.use(require("./src/routes/markdown/markdownCurrentPage/index"));
   app.use(require("./src/routes/upDownResorce/video/uploadVideo/index"));
   app.use(require("./src/routes/upDownResorce/video/getAllVideo/index"));
+  const a = require("./src/routes/upDownResorce/markdownUpload/index");
+  a();
   console.log("http://127.0.0.1:3000", "服务启动");
 });

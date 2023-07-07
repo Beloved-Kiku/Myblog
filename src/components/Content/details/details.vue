@@ -1,27 +1,21 @@
 <template>
-  <div class="box">
-    <n-card 
-      v-if="props.KeyWord!=='视频列表'"
-      :title="x.markdownTitle"
-      v-for="x in Current_details"
-      :key="x.id"
-      embedded
-      :bordered="false"
-      size="huge"
-    >
-      <div class="card" @click="gotoMarkDownPage(x)">
-        {{ x.markdownTitle }}
-      </div>
-    </n-card>
-      <Video
-        v-else
-        />
-  </div>
+      <n-card 
+        v-if="props.KeyWord !== '视频列表'"
+        :title="x.markdownTitle"
+        v-for="x in Current_details"
+        :key="x.id"
+        embedded
+        :bordered="false"
+        size="huge"
+      >
+        <div class="card" @click="gotoMarkDownPage(x)">
+          {{ x.markdownTitle }}
+        </div>
+      </n-card>
 </template>
 
 <script lang="ts" setup>
 import { getCurrentDetails } from "@/api/content/index.js";
-import  Video  from '@/components/Video/index.vue'
 import { Ref, ref } from "vue";
 import { useRouter} from "vue-router";
 //引入监听页面滚动函数
@@ -76,8 +70,12 @@ const gotoMarkDownPage = (data: any) => {
 </script>
 <style scoped>
 .n-card {
-  max-width: 100%;
-  height: 150px;
+  display: flex;
+  max-width: 70%;
+  height: 9.375rem /* 150/16 */;
   margin-bottom: 1%;
+  border-radius: 10px;
+  opacity: .8;
+  transition: all .8s;
 }
 </style>
